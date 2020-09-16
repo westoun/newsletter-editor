@@ -1,0 +1,32 @@
+app-preview{
+
+}
+
+.sidenav button {
+  width: 80%;
+}
+
+app-edit {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.content-area {
+  position: relative;
+}
+
+#create-button {
+  size: 60px;
+  z-index: 1;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 30px 50px;
+  box-shadow: 5px 5px 8px transparent;
+}
+
+::-webkit-scrollbar {
+  width: 0px;  /* remove scrollbar space */
+  background: transparent;  /* optional: just make scrollbar invisible */
+}

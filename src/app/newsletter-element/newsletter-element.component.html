@@ -1,0 +1,65 @@
+<div [ngSwitch]="newsletterElement.className" class="container-div">
+
+  <div class="overlay-div">
+    <div class="overlay-element move-element">
+      <div class="move-box">
+        <clr-icon shape="angle" class="move-item" (click)="onMoveUp()"></clr-icon>
+        <clr-icon shape="angle" style="transform: rotate(180deg);" class="move-item" (click)="onMoveDown()"></clr-icon>
+      </div>
+
+    </div>
+    <div *ngIf="newsletterElement.className==='HorizontalSeperatorElement'" class="overlay-element edit-element"></div>
+    <div *ngIf="newsletterElement.className!=='HorizontalSeperatorElement'" class="overlay-element edit-element" (click)="onEdit()">
+      <clr-icon shape="pencil"></clr-icon>
+    </div>
+    <div class="overlay-element delete-element" (click)="onDelete()">
+      <clr-icon shape="trash"></clr-icon>
+    </div>
+  </div>
+
+  <div *ngSwitchCase="'TextElement'">
+    <div style="height: 24px; width: 100%"></div>
+    <h3 style="width: 100%; text-align: center; font-weight: bold; margin: 0 0 0 0;">{{newsletterElement['header']}}</h3>
+    <p style="text-align: center; max-width: 600px; margin: 0 20px;">{{newsletterElement['text']}}</p>
+    <div style="height: 20px; width: 100%;"></div>
+  </div>
+
+  <div *ngSwitchCase="'PictureElement'">
+    <img src="{{newsletterElement['url']}}" style="width: 100%">
+  </div>
+
+  <div *ngSwitchCase="'PictureTextElement'">
+    <table style="width: 600px; height: 100%">
+      <tr>
+        <td style="width: 300px; padding: 10px 15px; min-width: 170px;">
+          <img style="width: 100%;" src="{{newsletterElement['url']}}">
+        </td>
+        <td style="width: 300px; padding: 5px 15px">
+          <h3 style="width: 100%; color: rgb(9,39,89); text-align: center; font-weight: bold;">{{newsletterElement['header']}}</h3>
+          <p style="width: 100%; color: black; max-width: 300px; margin: 10px;">{{newsletterElement['text']}}</p>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div *ngSwitchCase="'TextPictureElement'">
+    <table style="width: 600px; height: 100%">
+      <tr>
+        <td style="width: 300px; padding: 5px 15px">
+          <h3 style="width: 100%; color: rgb(9,39,89); text-align: center; font-weight: bold;">{{newsletterElement['header']}}</h3>
+          <p style="width: 100%; color: black; max-width: 300px; margin: 10px;">{{newsletterElement['text']}}</p>
+        </td>
+        <td style="width: 300px; padding: 10px 15px; min-width: 170px;">
+          <img style="width: 100%;" src="{{newsletterElement['url']}}">
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div *ngSwitchCase="'HorizontalSeperatorElement'" style="">
+    <div style="width: 100%; height: 5px"></div>
+    <hr style="border-color: lightgrey;">
+    <div style="width: 100%; height: 5px"></div>
+  </div>
+
+</div>

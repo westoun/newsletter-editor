@@ -1,0 +1,90 @@
+<clr-modal [(clrModalOpen)]="showModal" [clrModalSize]="'xl'" (change)="onContentChanged()">
+  <h3 class="modal-title">I have a nice title</h3>
+  <div class="modal-body" style="height: 100%;">
+
+    <div *ngIf="editElement" [ngSwitch]="editElement.className">
+
+      <div *ngSwitchCase="'PictureElement'" style="display: flex; align-items: center;">
+        <div style="flex: 1; height: 100%">
+          <label>URL</label>
+          <textarea [(ngModel)]="editElement['url']"></textarea>
+        </div>
+        <div style="flex: 1;  height: 100%;" class="preview-container">
+          <img src="{{editElement['url']}}" style="width: 100%">
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'TextElement'" style="display: flex; align-items: center;">
+        <div style="flex: 1">
+          <label>Header</label>
+          <textarea [(ngModel)]="editElement['header']" maxlength="36" style="font-weight: bold;color: rgb(9,39,89);"></textarea>
+          <label>Content</label>
+          <textarea [(ngModel)]="editElement['text']"></textarea>
+        </div>
+        <div style="flex: 1; height: 100%;" class="preview-container">
+          <div style="height: 24px; width: 100%"></div>
+          <h3 style="width: 100%; text-align: center; font-weight: bold; margin: 0 0 0 0;">
+            {{editElement['header']}}</h3>
+          <p style="text-align: center; max-width: 600px; margin: 0 20px;">
+            {{editElement['text']}}</p>
+          <div style="height: 20px; width: 100%;"></div>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'PictureTextElement'" style="display: flex; align-items: center;">
+        <div style="flex: 1; height: 100%">
+          <label>Header</label>
+          <textarea [(ngModel)]="editElement['header']" maxlength="36"></textarea>
+          <label>URL</label>
+          <textarea [(ngModel)]="editElement['url']"></textarea>
+          <label>Content</label>
+          <textarea [(ngModel)]="editElement['text']"></textarea>
+        </div>
+        <div style="flex: 1; height: 100%;" class="preview-container">
+          <table style="width: 100%; height: 100%">
+            <tr>
+              <td style="width: 50%; padding: 10px 15px; min-width: 170px;">
+                <img style="width: 100%;" src="{{editElement['url']}}">
+              </td>
+              <td style="width: 50%; padding: 5px 15px">
+                <h3 style="width: 100%; color: rgb(9,39,89); text-align: center; font-weight: bold;">{{editElement['header']}}</h3>
+                <p style="width: 100%; color: black; max-width: 300px; margin: 10px;">{{editElement['text']}}</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'TextPictureElement'" style="display: flex; align-items: center;">
+        <div style="flex: 1; height: 100%">
+            <label>Header</label>
+            <textarea [(ngModel)]="editElement['header']" maxlength="36"></textarea>
+            <label>URL</label>
+            <textarea [(ngModel)]="editElement['url']"></textarea>
+            <label>Content</label>
+            <textarea [(ngModel)]="editElement['text']"></textarea>
+        </div>
+        <div style="flex: 1; height: 100%;" class="preview-container">
+          <table style="width: 100%; height: 100%">
+            <tr>
+              <td style="width: 50%; padding: 5px 15px">
+                <h3 style="width: 100%; color: rgb(9,39,89); text-align: center; font-weight: bold;">{{editElement['header']}}</h3>
+                <p style="width: 100%; color: black; max-width: 300px; margin: 10px;">{{editElement['text']}}</p>
+              </td>
+              <td style="width: 50%; padding: 10px 15px; min-width: 170px;">
+                <img style="width: 100%;" src="{{editElement['url']}}">
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- <div class="modal-footer">
+          <button class="btn btn-outline" type="button">Discard Changes</button>
+          <button class="btn btn-primary" type="button" (click)="onUpdate()">Keep Changes</button>
+      </div> -->
+</clr-modal>

@@ -1,0 +1,23 @@
+.container-div {
+  padding: 20px;
+  margin: 20px;
+  background:rgb(9,39,89);
+  border-radius: 20px;
+}
+
+.content-div {
+  background: white;
+}
+
+h3 {
+  color: rgb(9,39,89);
+}
+
+label {
+  color: rgb(9,39,89);
+  font-weight: bold;
+}
+
+.preview-container {
+  background: white;
+}
